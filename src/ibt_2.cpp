@@ -10,7 +10,9 @@ IBT_2::IBT_2(uint8_t pin_pwm_l, uint8_t pin_pwm_r) : pin{pin_pwm_l, pin_pwm_r}
 void IBT_2::setSpeed(enum direction direction, uint8_t pwm)
 {
 #ifdef DEBUG
-	Serial.printf("DIR: %s, PWM: %hd\n",
+	Serial.printf("L: %hd, R: %hd, DIR: %s, PWM: %hd\n",
+				  pin.pwm_l,
+				  pin.pwm_r,
 				  direction == FORWARD ? "FORWARD" : "BACKWARD",
 				  pwm);
 #endif
