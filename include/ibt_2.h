@@ -4,6 +4,14 @@
 
 class IBT_2
 {
+public:
+	enum direction
+	{
+		FORWARD,
+		BACKWARD
+	};
+
+private:
 	struct
 	{
 		uint8_t pwm_l;
@@ -11,18 +19,8 @@ class IBT_2
 	} pin;
 
 public:
-	enum direction
-	{
-		FORWARD,
-		BACKWARD
-	};
-	struct
-	{
-		uint8_t curr;
-		enum direction direction;
-	} pwm;
-
 	IBT_2(uint8_t pin_pwm_l, uint8_t pin_pwm_r);
+	void setSpeed(enum direction direction, uint8_t speed);
 };
 
 #endif
