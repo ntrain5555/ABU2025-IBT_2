@@ -2,12 +2,12 @@
 #include "ibt_2.h"
 
 IBT_2::IBT_2(uint8_t pin_pwm_l, uint8_t pin_pwm_r) : pin{pin_pwm_l, pin_pwm_r},
-                                                     pwm{0, FORWARD}
+													 pwm{0, FORWARD}
 {
-    pinMode(pin.pwm_l, OUTPUT);
-    pinMode(pin.pwm_r, OUTPUT);
-    xTaskCreatePinnedToCore([](void *param)
-                            {
+	pinMode(pin.pwm_l, OUTPUT);
+	pinMode(pin.pwm_r, OUTPUT);
+	xTaskCreatePinnedToCore([](void *param)
+							{
 			IBT_2 *ibt_2 = (IBT_2 *) param;
 			enum IBT_2::direction direction = ibt_2->pwm.direction;
 			uint8_t pwm_curr = ibt_2->pwm.curr;
