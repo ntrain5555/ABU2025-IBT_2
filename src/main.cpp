@@ -1,20 +1,32 @@
 #include <Arduino.h>
 #include "ibt_2.h"
 
-IBT_2 *ibt_2 = nullptr;
+IBT_2 *m_fl = nullptr;
+IBT_2 *m_fr = nullptr;
+IBT_2 *m_bl = nullptr;
+IBT_2 *m_br = nullptr;
 
 void setup()
 {
 #ifdef DEBUG
 	Serial.begin(115200);
 #endif
-	ibt_2 = new IBT_2(22, 21);
+	m_fl = new IBT_2(21, 19);
+	m_fr = new IBT_2(14, 13);
+	m_bl = new IBT_2(23, 22);
+	m_br = new IBT_2(32, 33);
 }
 
 void loop()
 {
-	ibt_2->setSpeed(IBT_2::FORWARD, 100);
-	delay(5000);
-	ibt_2->setSpeed(IBT_2::BACKWARD, 100);
-	delay(5000);
+	m_fl->setSpeed(IBT_2::FORWARD, 100);
+	m_fr->setSpeed(IBT_2::FORWARD, 100);
+	m_bl->setSpeed(IBT_2::FORWARD, 100);
+	m_br->setSpeed(IBT_2::FORWARD, 100);
+	delay(1000);
+	m_fl->setSpeed(IBT_2::FORWARD, 200);
+	m_fr->setSpeed(IBT_2::FORWARD, 200);
+	m_bl->setSpeed(IBT_2::FORWARD, 200);
+	m_br->setSpeed(IBT_2::FORWARD, 200);
+	delay(1000);
 }
